@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Users
+%table.table.table-bordered.table-sortable
+  %thead
+    %tr
+      %th Name
+      %th Age
+      %th{:colspan => "3"}
+  %tbody#item{"data-model_name": "user.class.name.underscore", "data-update_url": "user_sort_path(user)"}
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.age
+        %td= link_to 'Show', user
+        %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New User', new_user_path
